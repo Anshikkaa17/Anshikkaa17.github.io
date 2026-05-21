@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anshika Singh | Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-dark: #085041;
+    --coral: #D85A30;
+    --coral-light: #FAECE7;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --bg: #fafaf8;
+    --white: #ffffff;
+    --border: #e8e4dc;
+    --card-bg: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--teal-dark);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 80px 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 4rem;
+  }
+  .hero-text { flex: 1; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
+
+  .hero-visual {
+    flex: 0 0 320px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .stat-icon {
+    width: 44px; height: 44px;
+    background: var(--teal-light);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .stat-num { font-size: 1.5rem; font-weight: 600; color: var(--teal-dark); }
+  .stat-label { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+
+  /* SKILLS */
+  .skills-bg { background: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .skill-group {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+  }
+  .skill-group h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.82rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.8rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--teal);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .project-card:hover::before { opacity: 1; }
+  .project-year {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .project-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .project-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+  .project-highlight {
+    background: var(--teal-light);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: var(--teal-dark);
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+  }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tech-pill {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--teal);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 10px; }
+
+  /* CERTIFICATIONS */
+  .cert-bg { background: var(--white); }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.3rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .cert-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--coral-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .cert-name { font-weight: 500; font-size: 0.95rem; margin-bottom: 2px; }
+  .cert-issuer { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* CONTACT */
+  .contact-box {
+    background: var(--teal-dark);
+    border-radius: 24px;
+    padding: 4rem;
+    text-align: center;
+    color: white;
+  }
+  .contact-box h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  .contact-box p {
+    font-size: 1.05rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-links {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .contact-link {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: background 0.2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.22); }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; gap: 2rem; padding-top: 100px; }
+    .hero-visual { flex: none; width: 100%; }
+    .nav-links { display: none; }
+    .contact-box { padding: 2.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Anshika Singh</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text fade-in">
+    <span class="hero-tag">📍 Delhi, India · Open to Freelance</span>
+    <h1>Turning raw data into <em>clear insights</em></h1>
+    <p class="hero-desc">Data Science student specializing in Python, Power BI & ML dashboards. I help businesses make sense of their data — fast.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-secondary">Hire Me</a>
+    </div>
+  </div>
+  <div class="hero-visual fade-in">
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div>
+        <div class="stat-num">85%</div>
+        <div class="stat-label">ML Model Accuracy (HR Attrition)</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🛠️</div>
+      <div>
+        <div class="stat-num">12+</div>
+        <div class="stat-label">GitHub Repositories</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎓</div>
+      <div>
+        <div class="stat-num">7.9</div>
+        <div class="stat-label">CGPA · B.Tech Data Science 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section class="skills-bg" id="skills">
+  <div class="container">
+    <p class="section-label">What I work with</p>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>ML & Data Science</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Visualization</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Plotly</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Seaborn</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools & Platforms</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Jupyter</span>
+          <span class="skill-tag">Google Colab</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">MS Excel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">My work</p>
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card fade-in">
+        <p class="project-year">2025</p>
+        <h3>HR Analytics: Employee Attrition Prediction</h3>
+        <p>Built a machine learning model on IBM HR dataset to predict which employees are likely to leave, helping HR teams take proactive action.</p>
+        <div class="project-highlight">🎯 85% prediction accuracy using Random Forest</div>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Scikit-learn</span>
+          <span class="tech-pill">SMOTE</span>
+          <span class="tech-pill">Power BI</span>
+        </div>
+        <a href="https://github.com/Anshikkaa17/HR-Analytics-Employee-Attrition" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <p class="project-year">2025</p>
+        <h3>Trader Behavior vs Market Sentiment</h3>
+        <p>Analyzed crypto trader PnL patterns against the Fear/Greed Index to uncover how market emotion cycles drive profit and loss outcomes.</p>
+        <div class="project-highlight">📈 Identified key correlations between sentiment cycles & PnL</div>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">Plotly</span>
+          <span class="tech-pill">Matplotlib</span>
+        </div>
+        <a href="https://github.com/Anshikkaa17/Trader-Behavior-vs-Market-Sentiment" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <p class="project-year">2025</p>
+        <h3>Sales Insights Dashboard</h3>
+        <p>Analyzed superstore sales data to surface revenue trends, top-performing categories, and regional insights through interactive visualizations.</p>
+        <div class="project-highlight">🛒 End-to-end sales analysis with actionable insights</div>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">Matplotlib</span>
+          <span class="tech-pill">Seaborn</span>
+        </div>
+        <a href="https://github.com/Anshikkaa17/sales-insights-dashboard" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <p class="project-year">2024</p>
+        <h3>HealthInsight: Medical Test Recommendation</h3>
+        <p>Developed a symptom-based engine that recommends medical tests using ML classification and provides precautionary health advice.</p>
+        <div class="project-highlight">🏥 ML + rule-based advisory system for diagnostics</div>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Scikit-learn</span>
+          <span class="tech-pill">Rule Engine</span>
+        </div>
+        <a href="https://github.com/Anshikkaa17" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="cert-bg" id="certifications">
+  <div class="container">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Certifications & Achievements</h2>
+    <div class="cert-grid fade-in">
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <p class="cert-name">Python for Data Science & Development</p>
+          <p class="cert-issuer">IBM</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🌐</div>
+        <div>
+          <p class="cert-name">Python Essentials</p>
+          <p class="cert-issuer">Cisco Networking Academy</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <div>
+          <p class="cert-name">Flipkart Grid 5.0 Qualifier</p>
+          <p class="cert-issuer">Advanced Data Science Challenge</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">⭐</div>
+        <div>
+          <p class="cert-name">3-Star Python & Problem Solving</p>
+          <p class="cert-issuer">HackerRank</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-box fade-in">
+      <h2>Let's work together</h2>
+      <p>Need a dashboard, data analysis, or ML model? I'm available for freelance projects — let's talk!</p>
+      <div class="contact-links">
+        <a href="mailto:anshikasingh.15424@gmail.com" class="contact-link">✉️ Email Me</a>
+        <a href="https://github.com/Anshikkaa17" target="_blank" class="contact-link">💻 GitHub</a>
+        <a href="https://www.fiverr.com/databyanshika_1" target="_blank" class="contact-link">🛒 Hire on Fiverr</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Anshika Singh · Data Analyst & ML Enthusiast · Delhi, India</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
